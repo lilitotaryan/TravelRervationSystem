@@ -10,6 +10,7 @@ public class Tour {
     private int duration;
     private Map <String, ArrayList <TourInstance>> tourInst = new HashMap <String, ArrayList <TourInstance>>();
 	
+	Tour(){};
 	public Tour(String description, int duration) {
     }
 
@@ -37,8 +38,10 @@ public class Tour {
 		this.duration = duration;
 	}
 	
-	public void addTourInst() {
-		
+	public void addTourInst(String tourID, TourInstance tourInstance) {
+		ArrayList <TourInstance> tInst = new ArrayList <TourInstance>();
+		tInst.add(tourInstance);
+		tourInst.put(tourID, tInst);		
 	}
 	
 	public void removeTourInst() {
