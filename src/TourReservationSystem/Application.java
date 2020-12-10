@@ -66,7 +66,26 @@ private static void runner(String operation, TravelReservatonSystem system) thro
         Date end = new SimpleDateFormat("dd/MM/yyyy").parse(newInputs[2]);
         system.getTourInstances(newInputs[0], new TimeInterval(start, end), Integer.parseInt(newInputs[3]));
         
-//        todo call choose tour number and call fixTour and enter traveler
+        System.out.println("Select tour instance ID.\n");
+        String tourInstanceID = reader.readLine();
+        
+        system.fixTourInstace(tourInstanceID);
+            
+        String[] travellerFields = {"1. First Name", "2. Last Name","3. Phone Number"};
+        
+        for(int i = 0; i < Integer.parseInt(newInputs[3]) ;++i) {
+        	String[] travellerData = new String[3];
+        	
+        	for(int j = 0; j < 3;++j) {
+        		System.out.println(travellerFields[j]);
+        		String data = reader.readLine();
+        		travellerData[j] = data;
+        	}
+        	
+        	system.enterTraveller(travellerData[0], travellerData[1], travellerData[2]);
+        }
+        
+        
       break;
     case "3":
     	run = false;
