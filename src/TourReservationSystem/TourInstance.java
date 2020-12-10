@@ -8,7 +8,8 @@ public class TourInstance {
 	private Date date;
 	private int numberOfVacancies;
 	private String manager;
-
+	private List<Traveller> travellers = new ArrayList<Traveller>();
+	
 	public String getTourInstanceID() {
 		return tourInstanceID;
 	}
@@ -35,6 +36,10 @@ public class TourInstance {
 	
 	public void setManager(String manager) {
 		this.manager = manager;
+	}
+	
+	public void addTraveller(Traveller traveller) {
+		travellers.add(traveller);
 	}
 	
 	TourInstance(Date date, int numberOfVacancies, String manager){

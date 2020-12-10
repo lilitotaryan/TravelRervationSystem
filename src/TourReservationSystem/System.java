@@ -1,11 +1,13 @@
 package TourReservationSystem;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class System {
 	private List<Archive> archive = new ArrayList<Archive>();
-	
+	private TourInstance tempTourInstance = null
+	private TourInstanceCatalog tourInstanceCatalog = new TourInstanceCatalog();
 	
     public System() {
     }
@@ -18,12 +20,19 @@ public class System {
 		return null;
 	}
 
-    public Boolean fixTourInstace(int tourInstanceID) {
-        return true;
+    public Boolean fixTourInstace(String tourInstanceID) {
+    	tempTourInstance = tourinstanceCatalog.getTourInstance(tourInstanceID)
+    			
+    	if(tempTourInstace == null) {
+    		System.out.println("Wrong ID");
+    	}
     }
     
-    public void enterTraveller(Object personalData) {
-   
+    public void enterTraveller(String firstName,String lastName, String phoneNumber) {
+    	assert tempTourInstance != null;
+    	
+    	Traveller newTraveller = new Traveller(firstName,lastName,phoneNumber);
+    	tempTourInstace.addTraveller(newTraveller);
     }
 
 	public void closeTourInstance(double tourInstanceID, int averageGrade){
