@@ -1,5 +1,6 @@
 package TourReservationSystem;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,7 +8,7 @@ public class Tour {
     private String tourID;
     private String descriptoin;
     private int duration;
-    private Map <String, TourInstance> tourInst = new HashMap <String, TourInstance>();
+    private Map <String, ArrayList <TourInstance>> tourInst = new HashMap <String, ArrayList <TourInstance>>();
 	
 	public Tour(String description, int duration) {
     }
@@ -42,6 +43,10 @@ public class Tour {
 	
 	public void removeTourInst() {
 		
+	}
+	
+	public Map <String, ArrayList <TourInstance>> getTourInst() {
+		return tourInst;
 	}
 	
 	
