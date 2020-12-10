@@ -7,12 +7,8 @@ public class Record {
 		this.setPersonalData(personalData);
 	}
 
-	public Boolean hasRecord(Object personalData) {
-		return true;
-	}
-
 	public Boolean check(Object personalData) {
-		return true;
+		return personalData == this.getPersonalData();
 	}
 	
 	public Object getPersonalData() {
@@ -21,5 +17,9 @@ public class Record {
 
 	public void setPersonalData(Object personalData) {
 		this.personalData = personalData;
+	}
+	
+	public Boolean hasRecord(Object personalData) {
+		return check(personalData);
 	}
 }

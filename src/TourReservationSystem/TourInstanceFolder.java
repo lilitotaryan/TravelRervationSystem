@@ -1,5 +1,6 @@
 package TourReservationSystem;
 import java.util.Date;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -17,16 +18,34 @@ public class TourInstanceFolder {
 		this.setTourID(tourID);
 	}
 	
-	public List <TourInstanceFolder> getTourInstenceInInterval(Object timestamp) {
-		return null;
+	public TourInstanceFolder getTourInstenceInInterval(TimeInterval timeInterval) {
+		if (this.getDate().after(timeInterval.getStartDate()) && this.getDate().before(timeInterval.getEndDate())) {
+			return this;
+		}
+		else {
+			return null;
+		}
 	}
 	
-	public void addAverage() {
-		
+	public Boolean hasRecord(Object personalData) {
+		for (int i=0; i<records.size(); ++i){
+    		if (!records.get(i).hasRecord(personalData)) {
+    			return false;
+    		}
+		}
+		return true;
+	}
+	
+	public float addAverage(double average) {
+		averageGrade+=this.getAverageGrade();
+		return averageGrade;
 	}
 	
 	public float getTotalAverage(String manager) {
-		return 0;
+		if (manager == this.getManager()) {
+			averageGrade = this.addAverage(averageGrade);
+		}
+		return averageGrade;
 	}
 	
 	public String getTourID() {
