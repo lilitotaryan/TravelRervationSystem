@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class TravelReservatonSystem {
-	private List<Archive> archive = new ArrayList<Archive>();
+	private Archive archive = new Archive();
 	private TourInstance tempTourInstance = null;
 	private ArrayList <TourInstance> tourInst = new ArrayList <TourInstance>();
 	private TourInstanceCatalog tourInstanceCatalog = new TourInstanceCatalog();
@@ -40,9 +40,9 @@ public class TravelReservatonSystem {
     	}
     }
     
-    public void enterTraveller(String firstName,String lastName, String phoneNumber) {
+    public void enterTraveller(String firstName, String lastName, String phoneNumber) {
     	assert tempTourInstance != null;
-    	Traveller newTraveller = new Traveller(firstName,lastName,phoneNumber);
+    	Traveller newTraveller = new Traveller(new PersonalData(firstName,lastName,phoneNumber));
     	tempTourInstance.addTraveller(newTraveller);
     }
 
@@ -50,21 +50,19 @@ public class TravelReservatonSystem {
 		
 	};
 
-    public  ArrayList <TourInstanceFolder> participantActivity(Object petrsonalData, TimeInterval timeInterval) {
-        return null;
+    public List <TourInstanceFolder> participantActivity(String firstName, String lastName, String phoneNumber, Date start, Date end) {
+    	List <TourInstanceFolder> result = archive.partcipantActivity(new PersonalData(firstName,lastName,phoneNumber), new TimeInterval(start, end));
+    	if (result.isEmpty()) {
+    		System.out.print("No data is found with specified input!!!");
+    	}
+        return result;
     }
 
     public float managerAssesment(String manager) {
-        return 0;
+    	float averageGrade = archive.managerAssesment(manager);
+    	if (averageGrade == 0) {
+    		System.out.print("No data is found with specified input!!!");
+    	}
+    	return averageGrade;
     }
-    
-    public void addArchive(Archive arch) 
-    { 
-    	archive.add(arch); 
-    } 
-       
-    public void removeArchive(Archive arch) 
-    { 
-    	archive.remove(arch); 
-    } 
 }

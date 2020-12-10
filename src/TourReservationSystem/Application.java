@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 //import java.util.HashMap;
 //import java.util.Map;
+import java.util.List;
 
 public class Application {
 	public static boolean run = true;
@@ -71,11 +72,28 @@ private static void runner(String operation, TravelReservatonSystem system) thro
     	run = false;
     	break;
     case "4":
-    	run = false;
+    	String[] case4_fields = {"1. First Name", "2. Last Name", "3. Phone Number", "4. Start Date in mm/dd/yyyy format", "5. End Date in mm/dd/yyyy format"};
+        String[] case4_newInputs = new String[4];
+        for (int i=0; i<case4_fields.length; i++) 
+        { 
+      	  System.out.println(case4_fields[i]);
+      	  String input = reader.readLine();
+      	case4_newInputs[i] = input;
+        }
+        Date case4_start = new SimpleDateFormat("dd/MM/yyyy").parse(case4_newInputs[3]);
+        Date case4_end = new SimpleDateFormat("dd/MM/yyyy").parse(case4_newInputs[4]);
+        List <TourInstanceFolder> case4_result = system.participantActivity(case4_newInputs[0], case4_newInputs[1], case4_newInputs[2], case4_start, case4_end);
+        for (int i=0; i<case4_result.size(); i++) 
+        { 
+      	  System.out.println("Tour ID " + case4_result.get(i).getTourID() + " Date " +  case4_result.get(i).getDate() + " Manager " + case4_result.get(i).getManager());
+        }
     	break;
     case "5":
-    	run = false;
-    	break;
+      	System.out.println("Manager");
+      	String input = reader.readLine();
+        float case5_result = system.managerAssesment(input);
+      	System.out.println("Average Grade " + case5_result);
+        
     case "6":
     	run = false;
     	break;
