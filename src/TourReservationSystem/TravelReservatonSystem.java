@@ -42,7 +42,7 @@ public class TravelReservatonSystem {
     
     public void enterTraveller(String firstName,String lastName, String phoneNumber) {
     	assert tempTourInstance != null;
-    	Traveller newTraveller = new Traveller(firstName,lastName,phoneNumber);
+    	Traveller newTraveller = new Traveller(new PersonalData(firstName,lastName,phoneNumber));
     	tempTourInstance.addTraveller(newTraveller);
     }
 

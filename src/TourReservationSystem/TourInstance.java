@@ -60,7 +60,8 @@ public class TourInstance {
 	};
 	
 	public String toString() {
-	    return (        " Date: "+ this.getDate() +
+	    return (		"ID: " + this.getTourInstanceID() +
+	    				" Date: "+ this.getDate() +
 	                    " Number of Vacancies: "+ this.getNumberOfVacancies() +
 	                    " Manager : " + this.getManager());
 	      	   }
