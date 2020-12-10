@@ -2,6 +2,9 @@ package TourReservationSystem;
 
 import java.util.Date;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class TourInstance {
 
 	private String tourInstanceID;
