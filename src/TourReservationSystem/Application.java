@@ -7,8 +7,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-//import java.util.HashMap;
-//import java.util.Map;
 
 public class Application {
 	public static boolean run = true;
@@ -68,6 +66,23 @@ private static void runner(String operation, TravelReservatonSystem system) thro
 //        todo call choose tour number and call fixTour and enter traveler
       break;
     case "3":
+    	String[] closeFields = {"1. Tour Instance ID", "2. Average Grade for Manager"};
+        String[] closeInputs = new String[2];
+        for (int i=0; i<closeFields.length; i++) 
+        { 
+      	  System.out.println(closeFields[i]);
+      	  String input = reader.readLine();
+      	  closeInputs[i] = input;
+        }
+    	system.closeTourInstance(closeInputs[0], Integer.parseInt(closeInputs[1]));
+    	break;
+    case "4":
+    	run = false;
+    	break;
+    case "5":
+    	run = false;
+    	break;
+    case "6":
     	run = false;
     	break;
     case "4":
