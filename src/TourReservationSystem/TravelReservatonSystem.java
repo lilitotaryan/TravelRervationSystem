@@ -45,10 +45,18 @@ public class TravelReservatonSystem {
     	Traveller newTraveller = new Traveller(new PersonalData(firstName,lastName,phoneNumber));
     	tempTourInstance.addTraveller(newTraveller);
     }
-
-	public void closeTourInstance(double tourInstanceID, int averageGrade){
-		
-	};
+   
+    public void closeTourInstance(String tourInstanceID, float averageGrade){
+		TourInstance tInst = tourInstanceCatalog.getTourInstance(tourInstanceID); 
+		TourInstanceFolder tFolder = new TourInstanceFolder(tInst.getTourID(), tInst.getDate(), tInst.getManager(), averageGrade);
+		ArrayList <Traveller> travellers = tInst.getTravellers();
+		for (Traveller tr : travellers) {
+			Record record = new Record(tr.getPersonalData());
+			tFolder.addRecords(record);
+		}
+		archive.addFolders(tFolder);
+		tourInstanceCatalog.removeTourInstance(tInst);
+    };
 
     public List <TourInstanceFolder> participantActivity(String firstName, String lastName, String phoneNumber, Date start, Date end) {
     	List <TourInstanceFolder> result = archive.partcipantActivity(new PersonalData(firstName,lastName,phoneNumber), new TimeInterval(start, end));

@@ -88,7 +88,15 @@ private static void runner(String operation, TravelReservatonSystem system) thro
         
       break;
     case "3":
-    	run = false;
+    	String[] closeFields = {"1. Tour Instance ID", "2. Average Grade for Manager"};
+        String[] closeInputs = new String[2];
+        for (int i=0; i<closeFields.length; i++) 
+        { 
+      	  System.out.println(closeFields[i]);
+      	  String input = reader.readLine();
+      	  closeInputs[i] = input;
+        }
+    	system.closeTourInstance(closeInputs[0], Integer.parseInt(closeInputs[1]));
     	break;
     case "4":
     	String[] case4_fields = {"1. First Name", "2. Last Name", "3. Phone Number", "4. Start Date in mm/dd/yyyy format", "5. End Date in mm/dd/yyyy format"};

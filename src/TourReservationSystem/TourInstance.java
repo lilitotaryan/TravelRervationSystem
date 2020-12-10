@@ -9,8 +9,24 @@ public class TourInstance {
 	private Date date;
 	private int numberOfVacancies;
 	private String manager;
-  
+	private String tourID;
 	private ArrayList<Traveller> travellers = new ArrayList<Traveller>();
+  
+	public String getTourID() {
+		return tourID;
+	}
+
+	public void setTourID(String tourID) {
+		this.tourID = tourID;
+	}
+
+	public ArrayList<Traveller> getTravellers() {
+		return travellers;
+	}
+
+	public void setTravellers(ArrayList<Traveller> travellers) {
+		this.travellers = travellers;
+	}
 
 	public String getTourInstanceID() {
 		return tourInstanceID;
