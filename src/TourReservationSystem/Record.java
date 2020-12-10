@@ -1,25 +1,25 @@
 package TourReservationSystem;
 
 public class Record {
-	private Object personalData;
+	private PersonalData personalData;
 	
-	public Record(Object personalData) {
+	public Record(PersonalData personalData) {
 		this.setPersonalData(personalData);
 	}
 
-	public Boolean check(Object personalData) {
-		return personalData == this.getPersonalData();
+	public Boolean check(PersonalData personalData) {
+		return personalData.equalsEachOther(this.getPersonalData());
 	}
 	
-	public Object getPersonalData() {
-		return personalData;
+	public PersonalData getPersonalData() {
+		return this.personalData;
 	}
 
-	public void setPersonalData(Object personalData) {
+	public void setPersonalData(PersonalData personalData) {
 		this.personalData = personalData;
 	}
 	
-	public Boolean hasRecord(Object personalData) {
+	public Boolean hasRecord(PersonalData personalData) {
 		return check(personalData);
 	}
 }

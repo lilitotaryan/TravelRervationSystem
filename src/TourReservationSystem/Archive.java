@@ -9,7 +9,7 @@ public class Archive {
 		
 	}
 	
-	public List <TourInstanceFolder> partcipantActivity(Object personalData, TimeInterval timeInterval) {
+	public List <TourInstanceFolder> partcipantActivity(PersonalData personalData, TimeInterval timeInterval) {
 		List<TourInstanceFolder> tourInstances = new ArrayList<TourInstanceFolder>();
     	for (int i=0; i<folders.size(); ++i){
     		if (folders.get(i).getTourInstenceInInterval(timeInterval) != null) {
@@ -24,7 +24,7 @@ public class Archive {
     public float managerAssesment(String manager) {
     	float totalAverage = 0;
     	for (int i=0; i<folders.size(); ++i){
-    		totalAverage+= folders.get(i).getTotalAverage(manager);
+    		totalAverage+=folders.get(i).getTotalAverage(manager);
     	}
     	
         return this.calculateMean(totalAverage);

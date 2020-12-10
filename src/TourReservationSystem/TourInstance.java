@@ -9,14 +9,14 @@ public class TourInstance {
 	private Date date;
 	private int numberOfVacancies;
 	private String manager;
-	private String tourID;
+	private int tourID;
 	private ArrayList<Traveller> travellers = new ArrayList<Traveller>();
   
-	public String getTourID() {
+	public int getTourID() {
 		return tourID;
 	}
 
-	public void setTourID(String tourID) {
+	public void setTourID(int tourID) {
 		this.tourID = tourID;
 	}
 

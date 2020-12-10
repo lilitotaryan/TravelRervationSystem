@@ -5,20 +5,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Tour {
-    private String tourID;
+    private int tourID;
     private String descriptoin;
     private int duration;
     private Map <String, ArrayList <TourInstance>> tourInst = new HashMap <String, ArrayList <TourInstance>>();
 	
 	Tour(){};
-	public Tour(String description, int duration) {
+	public Tour(String description, int duration, int tourID) {
+		this.setDescriptoin(description);
+		this.setDuration(duration);
+		this.setTourID(tourID);
     }
 
-	public String getTourID() {
+	public int getTourID() {
 		return tourID;
 	}
 
-	public void setTourID(String tourID) {
+	public void setTourID(int tourID) {
 		this.tourID = tourID;
 	}
 

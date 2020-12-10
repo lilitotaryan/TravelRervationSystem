@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class TourInstanceFolder {
-	private String tourID;
+	private int tourID;
 	private Date date;
 	private String manager;
 	private float averageGrade;
 	private List<Record> records = new ArrayList<Record>();
 	
-	public TourInstanceFolder(String tourID, Date date, String manager, float averageGrade) {
+	public TourInstanceFolder(int tourID, Date date, String manager, float averageGrade) {
 		this.setAverageGrade(averageGrade);
 		this.setDate(date);
 		this.setManager(manager);
@@ -19,7 +19,7 @@ public class TourInstanceFolder {
 	}
 	
 	public TourInstanceFolder getTourInstenceInInterval(TimeInterval timeInterval) {
-		if (this.getDate().after(timeInterval.getStartDate()) && this.getDate().before(timeInterval.getEndDate())) {
+		if (timeInterval.check(this.getDate())) {
 			return this;
 		}
 		else {
@@ -27,8 +27,9 @@ public class TourInstanceFolder {
 		}
 	}
 	
-	public Boolean hasRecord(Object personalData) {
+	public Boolean hasRecord(PersonalData personalData) {
 		for (int i=0; i<records.size(); ++i){
+			System.out.println(records.get(i).hasRecord(personalData));
     		if (!records.get(i).hasRecord(personalData)) {
     			return false;
     		}
@@ -36,23 +37,24 @@ public class TourInstanceFolder {
 		return true;
 	}
 	
-	public float addAverage(double average) {
-		averageGrade+=this.getAverageGrade();
-		return averageGrade;
+	public float addAverage(float average) {
+		average+=this.getAverageGrade();
+		return average;
 	}
 	
 	public float getTotalAverage(String manager) {
-		if (manager == this.getManager()) {
-			averageGrade = this.addAverage(averageGrade);
+		float resultAverageGrade = 0;
+		if (manager.equals(this.getManager())) {
+			resultAverageGrade = this.addAverage(resultAverageGrade);
 		}
-		return averageGrade;
+		return resultAverageGrade;
 	}
 	
-	public String getTourID() {
+	public int getTourID() {
 		return tourID;
 	}
 	
-	public void setTourID(String tourID) {
+	public void setTourID(int tourID) {
 		this.tourID = tourID;
 	}
 	

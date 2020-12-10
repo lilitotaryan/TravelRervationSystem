@@ -1,5 +1,7 @@
 package TourReservationSystem;
 
+import java.util.Objects;
+
 public class PersonalData {
 	private String firstName;
 	private String lastName;
@@ -34,5 +36,11 @@ public class PersonalData {
 	
 	public void setPhoneNumber(String phoneNumber){
 		this.phoneNumber = phoneNumber;
+	}
+	
+	public Boolean equalsEachOther(PersonalData personalData) {
+		return (this.getFirstName().equals(personalData.getFirstName()) 
+				&& this.getLastName().equals(personalData.getLastName()) 
+				&& this.getPhoneNumber().equals(personalData.getPhoneNumber()));
 	}
 }

@@ -8,6 +8,7 @@ public class TravelReservatonSystem {
 	private Archive archive = new Archive();
 	private TourInstance tempTourInstance = null;
 	private ArrayList <TourInstance> tourInst = new ArrayList <TourInstance>();
+	private TourCatalog tourCatalog = new TourCatalog();
 	private TourInstanceCatalog tourInstanceCatalog = new TourInstanceCatalog();
 	private Tour tour = new Tour();
 	
@@ -42,7 +43,7 @@ public class TravelReservatonSystem {
     
     public void enterTraveller(String firstName, String lastName, String phoneNumber) {
     	assert tempTourInstance != null;
-    	Traveller newTraveller = new Traveller(new PersonalData(firstName,lastName,phoneNumber));
+    	Traveller newTraveller = new Traveller(new PersonalData(firstName, lastName, phoneNumber));
     	tempTourInstance.addTraveller(newTraveller);
     }
    
@@ -59,7 +60,7 @@ public class TravelReservatonSystem {
     };
 
     public List <TourInstanceFolder> participantActivity(String firstName, String lastName, String phoneNumber, Date start, Date end) {
-    	List <TourInstanceFolder> result = archive.partcipantActivity(new PersonalData(firstName,lastName,phoneNumber), new TimeInterval(start, end));
+    	List <TourInstanceFolder> result = archive.partcipantActivity(new PersonalData(firstName, lastName, phoneNumber), new TimeInterval(start, end));
     	if (result.isEmpty()) {
     		System.out.print("No data is found with specified input!!!");
     	}
