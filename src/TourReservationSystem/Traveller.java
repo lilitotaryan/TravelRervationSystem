@@ -1,39 +1,19 @@
 package TourReservationSystem;
 
 public class Traveller{
-	String firstName;
-	String lastName;
-	String phoneNumber;
+	private PersonalData personalData;
 	
-	public Traveller(String firstName, String lastName, String phoneNumber){
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.phoneNumber = phoneNumber;
+	public Traveller(PersonalData personalData){
+		this.personalData = personalData;
 	}
-	
-	
-	public String getFirstName(){
-		return firstName;
+
+	public PersonalData getPersonalData() {
+		return personalData;
 	}
-	
-	public void setFirstName(String firstName){
-		this.firstName = firstName;
-	}
-	
-	public String getLastName(){
-		return lastName;
-	}
-	
-	public void setLastName(String lastName){
-		this.lastName = firstName;
-	}
-	
-	public String getPhoneNumber(){
-		return phoneNumber;
-	}
-	
-	public void setPhoneNumber(String phoneNumber){
-		this.phoneNumber = phoneNumber;
+
+
+	public void setPersonalData(PersonalData personalData) {
+		this.personalData = personalData;
 	}
 }
 
