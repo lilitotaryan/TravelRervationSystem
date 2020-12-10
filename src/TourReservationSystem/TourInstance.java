@@ -1,5 +1,6 @@
 package TourReservationSystem;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class TourInstance {
@@ -8,6 +9,7 @@ public class TourInstance {
 	private Date date;
 	private int numberOfVacancies;
 	private String manager;
+	private ArrayList<Traveller> travellers = new ArrayList<Traveller>();
 
 	public String getTourInstanceID() {
 		return tourInstanceID;
@@ -49,8 +51,14 @@ public class TourInstance {
 	};
 	
 	private String generateID(){
-		return "";
+		return "1";
 	};
+	
+	public String toString() {
+	    return (        " Date: "+ this.getDate() +
+	                    " Number of Vacancies: "+ this.getNumberOfVacancies() +
+	                    " Manager : " + this.getManager());
+	      	   }
 
 }
 
