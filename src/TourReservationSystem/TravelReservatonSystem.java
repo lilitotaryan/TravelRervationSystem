@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class TravelReservatonSystem {
-	private List<Archive> archive = new ArrayList<Archive>();
+	private Archive archive = new Archive();
 	private TourInstance tempTourInstance = null;
 	private ArrayList <TourInstance> tourInst = new ArrayList <TourInstance>();
 	private TourInstanceCatalog tourInstanceCatalog = new TourInstanceCatalog();
@@ -45,10 +45,18 @@ public class TravelReservatonSystem {
     	Traveller newTraveller = new Traveller(new PersonalData(firstName,lastName,phoneNumber));
     	tempTourInstance.addTraveller(newTraveller);
     }
-
-	public void closeTourInstance(double tourInstanceID, int averageGrade){
-		
-	};
+   
+    public void closeTourInstance(String tourInstanceID, float averageGrade){
+		TourInstance tInst = tourInstanceCatalog.getTourInstance(tourInstanceID); 
+		TourInstanceFolder tFolder = new TourInstanceFolder(tInst.getTourID(), tInst.getDate(), tInst.getManager(), averageGrade);
+		ArrayList <Traveller> travellers = tInst.getTravellers();
+		for (Traveller tr : travellers) {
+			Record record = new Record(tr.getPersonalData());
+			tFolder.addRecords(record);
+		}
+		archive.addFolders(tFolder);
+		tourInstanceCatalog.removeTourInstance(tInst);
+    };
 
     public  ArrayList <TourInstanceFolder> participantActivity(Object petrsonalData, TimeInterval timeInterval) {
         return null;
