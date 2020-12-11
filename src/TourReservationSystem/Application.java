@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 //import java.util.HashMap;
 //import java.util.Map;
@@ -65,28 +66,34 @@ private static void runner(String operation, TravelReservatonSystem system) thro
         }
         Date start = new SimpleDateFormat("dd/MM/yyyy").parse(newInputs[1]);
         Date end = new SimpleDateFormat("dd/MM/yyyy").parse(newInputs[2]);
-        system.getTourInstances(Integer.parseInt(newInputs[0]), new TimeInterval(start, end), Integer.parseInt(newInputs[3]));
+        ArrayList <TourInstance> tourInstances = system.getTourInstances(Integer.parseInt(newInputs[0]), new TimeInterval(start, end), Integer.parseInt(newInputs[3]));
         
-        System.out.println("Select tour instance ID.\n");
-        String tourInstanceID = reader.readLine();
-        
-        system.fixTourInstace(tourInstanceID);
+        if(!tourInstances.isEmpty()) {
+        	System.out.println("Select tour instance ID.\n");
+            String tourInstanceID = reader.readLine();
             
-        String[] travellerFields = {"1. First Name", "2. Last Name","3. Phone Number"};
-        
-        for(int i = 0; i < Integer.parseInt(newInputs[3]) ;++i) {
-        	String[] travellerData = new String[3];
-        	
-        	for(int j = 0; j < 3;++j) {
-        		System.out.println(travellerFields[j]);
-        		String data = reader.readLine();
-        		travellerData[j] = data;
-        	}
-        	
-        	system.enterTraveller(travellerData[0], travellerData[1], travellerData[2]);
+            system.fixTourInstace(tourInstanceID);
+                
+            TourInstance temp = system.getTempTourInstance();
+            if(temp != null) {
+            	String[] travellerFields = {"1. First Name", "2. Last Name","3. Phone Number"};
+                
+                for(int i = 0; i < Integer.parseInt(newInputs[3]) ;++i) {
+                	String[] travellerData = new String[3];
+                	
+                	for(int j = 0; j < 3;++j) {
+                		System.out.println(travellerFields[j]);
+                		String data = reader.readLine();
+                		travellerData[j] = data;
+                	}
+                	
+                	system.enterTraveller(travellerData[0], travellerData[1], travellerData[2]);
+                }
+            }
         }
-        
-        
+        else {
+        	System.out.println("Sorry no matching tour with your requirements was found :(");
+        }
       break;
     case "3":
     	String[] closeFields = {"1. Tour Instance ID", "2. Average Grade for Manager"};

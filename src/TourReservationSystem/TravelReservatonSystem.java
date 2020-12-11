@@ -15,7 +15,15 @@ public class TravelReservatonSystem {
 	
     public TravelReservatonSystem() {
     }
+  
+    public TourInstance getTempTourInstance() {
+		return tempTourInstance;
+	}
 
+	public void setTempTourInstance(TourInstance tempTourInstance) {
+		this.tempTourInstance = tempTourInstance;
+	}
+	
     public void getTours() {
     	for (Map.Entry<Integer, Tour> entry : tourCatalog.getTours().entrySet())  
             System.out.println("Tour ID: " + entry.getKey() + 
