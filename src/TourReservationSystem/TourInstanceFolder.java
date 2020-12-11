@@ -29,12 +29,11 @@ public class TourInstanceFolder {
 	
 	public Boolean hasRecord(PersonalData personalData) {
 		for (int i=0; i<records.size(); ++i){
-			System.out.println(records.get(i).hasRecord(personalData));
-    		if (!records.get(i).hasRecord(personalData)) {
-    			return false;
+    		if (records.get(i).hasRecord(personalData)) {
+    			return true;
     		}
 		}
-		return true;
+		return false;
 	}
 	
 	public float addAverage(float average) {
