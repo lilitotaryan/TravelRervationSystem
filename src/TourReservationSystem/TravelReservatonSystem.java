@@ -30,8 +30,14 @@ public class TravelReservatonSystem {
                              " Tour Info: " + entry.getValue().toString());
     }
     
+    public Map<String, TourInstance> getTourInstList() {
+    	for (Map.Entry<String, TourInstance> entry : tourInstanceCatalog.getTours().entrySet())  
+            System.out.println(entry.getValue().toString());
+    	return tourInstanceCatalog.getTours();
+    }
+    
     public void openTourInstance(int tourID, Date date, int numberOfParticipants, String manager) {
-    	TourInstance tourInst = new TourInstance(date, numberOfParticipants, manager);
+    	TourInstance tourInst = new TourInstance(tourID, date, numberOfParticipants, manager);
     	tourInstanceCatalog.addTourInstance(tourInst);
     	tour.addTourInst(tourID, tourInst);
     };
@@ -74,6 +80,7 @@ public class TravelReservatonSystem {
 			tFolder.addRecords(record);
 		}
 		archive.addFolders(tFolder);
+		tour.getTourInst().get(tInst.getTourID()).remove(tInst);
 		tourInstanceCatalog.removeTourInstance(tInst);
     };
 

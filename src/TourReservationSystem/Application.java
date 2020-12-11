@@ -10,6 +10,7 @@ import java.util.Date;
 //import java.util.HashMap;
 //import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
 	public static boolean run = true;
@@ -70,25 +71,29 @@ private static void runner(String operation, TravelReservatonSystem system) thro
         
         if(!tourInstances.isEmpty()) {
         	System.out.println("Select tour instance ID.\n");
-            String tourInstanceID = reader.readLine();
-            
+            String tourInstanceID = reader.readLine();            
             system.fixTourInstace(tourInstanceID);
                 
             TourInstance temp = system.getTempTourInstance();
-            if(temp != null) {
-            	String[] travellerFields = {"1. First Name", "2. Last Name","3. Phone Number"};
-                
-                for(int i = 0; i < Integer.parseInt(newInputs[3]) ;++i) {
-                	String[] travellerData = new String[3];
-                	
-                	for(int j = 0; j < 3;++j) {
-                		System.out.println(travellerFields[j]);
-                		String data = reader.readLine();
-                		travellerData[j] = data;
-                	}
-                	
-                	system.enterTraveller(travellerData[0], travellerData[1], travellerData[2]);
-                }
+            while(temp == null) {
+            	System.out.println("Please select the right tour instance ID!\n");
+            	tourInstanceID = reader.readLine();
+            	system.fixTourInstace(tourInstanceID);
+            	temp = system.getTempTourInstance();
+            }
+            
+            String[] travellerFields = {"1. First Name", "2. Last Name","3. Phone Number"};
+            
+            for(int i = 0; i < Integer.parseInt(newInputs[3]) ;++i) {
+            	String[] travellerData = new String[3];
+            	
+            	for(int j = 0; j < 3;++j) {
+            		System.out.println(travellerFields[j]);
+            		String data = reader.readLine();
+            		travellerData[j] = data;
+            	}
+            	
+            	system.enterTraveller(travellerData[0], travellerData[1], travellerData[2]);
             }
         }
         else {
@@ -96,15 +101,21 @@ private static void runner(String operation, TravelReservatonSystem system) thro
         }
       break;
     case "3":
-    	String[] closeFields = {"1. Tour Instance ID", "2. Average Grade for Manager"};
-        String[] closeInputs = new String[2];
-        for (int i=0; i<closeFields.length; i++) 
-        { 
-      	  System.out.println(closeFields[i]);
-      	  String input = reader.readLine();
-      	  closeInputs[i] = input;
-        }
-    	system.closeTourInstance(closeInputs[0], Integer.parseInt(closeInputs[1]));
+    	Map<String, TourInstance> tourInstMap = system.getTourInstList();
+    	if(tourInstMap.isEmpty()) {
+    		System.out.println("Sorry there is nothing to show :(");
+    	}
+    	else {
+    		String[] closeFields = {"1. Tour Instance ID", "2. Average Grade for Manager"};
+            String[] closeInputs = new String[2];
+            for (int i=0; i<closeFields.length; i++) 
+            { 
+          	  System.out.println(closeFields[i]);
+          	  String input = reader.readLine();
+          	  closeInputs[i] = input;
+            }
+        	system.closeTourInstance(closeInputs[0], Integer.parseInt(closeInputs[1]));
+    	}
     	break;
     case "4":
     	String[] case4_fields = {"1. First Name", "2. Last Name", "3. Phone Number", "4. Start Date in mm/dd/yyyy format", "5. End Date in mm/dd/yyyy format"};
@@ -135,6 +146,5 @@ private static void runner(String operation, TravelReservatonSystem system) thro
     default:
     	System.out.println(operation); 
   }
-} 
-
+ } 
 }

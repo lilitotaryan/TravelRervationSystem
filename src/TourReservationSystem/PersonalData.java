@@ -1,7 +1,5 @@
 package TourReservationSystem;
 
-import java.util.Objects;
-
 public class PersonalData {
 	private String firstName;
 	private String lastName;

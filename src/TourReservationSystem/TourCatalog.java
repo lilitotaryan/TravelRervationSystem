@@ -16,12 +16,17 @@ public class TourCatalog {
 	}
 
 	public TourCatalog() {
-		for (int i=1;i<=11; i++) {
-			this.addTours(new Tour("description" + i, i*60, i)); 
+		for (int i=0;i<=10; i++) {
+			this.addTours(new Tour("description" + i, i+60, i)); 
 		} 
 	}
 	
 	public void addTours(Tour tour) {
 		tours.put(tour.getTourID(), tour);
+	}
+	
+	public Tour getTour(int tourID) {
+		Tour t = tours.get(tourID); 
+		return t;
 	}
 }

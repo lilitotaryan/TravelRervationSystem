@@ -61,7 +61,8 @@ public class TourInstance {
 		travellers.add(traveller);
 	}
 	
-	TourInstance(Date date, int numberOfVacancies, String manager){
+	TourInstance(int tourID, Date date, int numberOfVacancies, String manager){
+		this.tourID = tourID;
 		this.tourInstanceID = generateID();
 		this.date = date;
 		this.numberOfVacancies = numberOfVacancies;

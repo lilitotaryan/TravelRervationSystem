@@ -42,22 +42,23 @@ public class Tour {
 	}
 	
 	public void addTourInst(int tourID, TourInstance tourInstance) {
-		ArrayList <TourInstance> tInst = new ArrayList <TourInstance>();
-		tInst.add(tourInstance);
-		tourInst.put(tourID, tInst);		
+		if(tourInst.get(tourID) != null) {
+			tourInst.get(tourID).add(tourInstance);
+		}
+		else {
+			ArrayList <TourInstance> tInst = new ArrayList <TourInstance>();
+			tInst.add(tourInstance);
+			tourInst.put(tourID, tInst);
+		}		
 	}
-	
-	public void removeTourInst() {
 		
-	}
-	
 	public Map <Integer, ArrayList <TourInstance>> getTourInst() {
 		return tourInst;
 	}
 	
 	public String toString() {
 	    return (    	" Description: "+ this.getDescriptoin() +
-	                    " Duration : " + this.getDuration());
+	                    " Duration in minutes: " + this.getDuration());
 	      	   }
 	
 	
