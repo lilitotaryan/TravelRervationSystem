@@ -87,7 +87,7 @@ public class TravelReservatonSystem {
     public List <TourInstanceFolder> participantActivity(String firstName, String lastName, String phoneNumber, Date start, Date end) {
     	List <TourInstanceFolder> result = archive.partcipantActivity(new PersonalData(firstName, lastName, phoneNumber), new TimeInterval(start, end));
     	if (result.isEmpty()) {
-    		System.out.print("No data is found with specified input!!!");
+    		System.out.println("No data is found with specified input!!!");
     	}
         return result;
     }
@@ -95,7 +95,7 @@ public class TravelReservatonSystem {
     public float managerAssesment(String manager) {
     	float averageGrade = archive.managerAssesment(manager);
     	if (averageGrade == 0) {
-    		System.out.print("No data is found with specified input!!!");
+    		System.out.println("No data is found with specified input!!!");
     	}
     	return averageGrade;
     }
