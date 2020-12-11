@@ -1,6 +1,7 @@
 package TourReservationSystem;
 
 import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -15,13 +16,20 @@ public class TravelReservatonSystem {
     public TravelReservatonSystem() {
     }
 
-    public void openTourInstance(String tourID, Date date, int numberOfParticipants, String manager) {
+    public void getTours() {
+    	for (Map.Entry<Integer, Tour> entry : tourCatalog.getTours().entrySet())  
+            System.out.println("Tour ID: " + entry.getKey() + 
+                             " Tour Info: " + entry.getValue().toString());
+    }
+    
+    public void openTourInstance(int tourID, Date date, int numberOfParticipants, String manager) {
     	TourInstance tourInst = new TourInstance(date, numberOfParticipants, manager);
     	tourInstanceCatalog.addTourInstance(tourInst);
     	tour.addTourInst(tourID, tourInst);
     };
 
-	public ArrayList <TourInstance> getTourInstances(String tourID, TimeInterval timeInterval, int numberOfPersons) {
+	public ArrayList <TourInstance> getTourInstances(int tourID, TimeInterval timeInterval, int numberOfPersons) {
+		 tourInst = new ArrayList <TourInstance>();
 		 ArrayList <TourInstance> tourInstances = tour.getTourInst().get(tourID);
 		 for (TourInstance t : tourInstances) {
 			 if(t.getNumberOfVacancies() >= numberOfPersons && timeInterval.check(t.getDate())) {
@@ -45,6 +53,8 @@ public class TravelReservatonSystem {
     	assert tempTourInstance != null;
     	Traveller newTraveller = new Traveller(new PersonalData(firstName, lastName, phoneNumber));
     	tempTourInstance.addTraveller(newTraveller);
+    	int numOfVacancies = tempTourInstance.getNumberOfVacancies();
+    	tempTourInstance.setNumberOfVacancies(--numOfVacancies);
     }
    
     public void closeTourInstance(String tourInstanceID, float averageGrade){

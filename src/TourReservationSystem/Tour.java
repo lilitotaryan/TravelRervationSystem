@@ -8,7 +8,7 @@ public class Tour {
     private int tourID;
     private String descriptoin;
     private int duration;
-    private Map <String, ArrayList <TourInstance>> tourInst = new HashMap <String, ArrayList <TourInstance>>();
+    private Map <Integer, ArrayList <TourInstance>> tourInst = new HashMap <Integer, ArrayList <TourInstance>>();
 	
 	Tour(){};
 	public Tour(String description, int duration, int tourID) {
@@ -41,7 +41,7 @@ public class Tour {
 		this.duration = duration;
 	}
 	
-	public void addTourInst(String tourID, TourInstance tourInstance) {
+	public void addTourInst(int tourID, TourInstance tourInstance) {
 		ArrayList <TourInstance> tInst = new ArrayList <TourInstance>();
 		tInst.add(tourInstance);
 		tourInst.put(tourID, tInst);		
@@ -51,9 +51,14 @@ public class Tour {
 		
 	}
 	
-	public Map <String, ArrayList <TourInstance>> getTourInst() {
+	public Map <Integer, ArrayList <TourInstance>> getTourInst() {
 		return tourInst;
 	}
+	
+	public String toString() {
+	    return (    	" Description: "+ this.getDescriptoin() +
+	                    " Duration : " + this.getDuration());
+	      	   }
 	
 	
 }

@@ -2,6 +2,7 @@ package TourReservationSystem;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
 public class TourInstance {
 
@@ -72,7 +73,7 @@ public class TourInstance {
 	};
 	
 	private String generateID(){
-		return "1";
+		return UUID.randomUUID().toString();
 	};
 	
 	public String toString() {

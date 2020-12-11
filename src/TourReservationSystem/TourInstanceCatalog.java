@@ -14,7 +14,7 @@ public class TourInstanceCatalog {
 	};
 	
 	public void removeTourInstance(TourInstance tourInstance) {
-		tours.remove(tourInstance.getTourID());		
+		tours.remove(tourInstance.getTourInstanceID());		
 	};
 	
 	public TourInstance getTourInstance(String tourInstanceID) {

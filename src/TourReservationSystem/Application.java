@@ -42,6 +42,7 @@ private static void runner(String operation, TravelReservatonSystem system) thro
             new BufferedReader(new InputStreamReader(System.in)); 
 	switch(operation) {
     case "1":
+      system.getTours();
       String[] fields = {"1. Tour ID", "2. Date in mm/dd/yyyy format", "3. Number of Participants", "4. Manager Name"};
       System.out.println( "Fill the required fields");
       String[] inputs = new String[4];
@@ -51,7 +52,7 @@ private static void runner(String operation, TravelReservatonSystem system) thro
     	  String input = reader.readLine();
     	  inputs[i] = input;
       }
-      system.openTourInstance(inputs[0], new SimpleDateFormat("dd/MM/yyyy").parse(inputs[1]), Integer.parseInt(inputs[2]), inputs[3]);
+      system.openTourInstance(Integer.parseInt(inputs[0]), new SimpleDateFormat("dd/MM/yyyy").parse(inputs[1]), Integer.parseInt(inputs[2]), inputs[3]);
        break;
     case "2":
     	String[] field = {"1. Tour ID", "2. Start Date in mm/dd/yyyy format", "3. End Date in mm/dd/yyyy format", "4. Number of Participants"};
@@ -64,7 +65,7 @@ private static void runner(String operation, TravelReservatonSystem system) thro
         }
         Date start = new SimpleDateFormat("dd/MM/yyyy").parse(newInputs[1]);
         Date end = new SimpleDateFormat("dd/MM/yyyy").parse(newInputs[2]);
-        system.getTourInstances(newInputs[0], new TimeInterval(start, end), Integer.parseInt(newInputs[3]));
+        system.getTourInstances(Integer.parseInt(newInputs[0]), new TimeInterval(start, end), Integer.parseInt(newInputs[3]));
         
         System.out.println("Select tour instance ID.\n");
         String tourInstanceID = reader.readLine();
